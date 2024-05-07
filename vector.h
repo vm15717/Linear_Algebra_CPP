@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cmath>
+#include "mysqrt.cpp"
 using namespace std;
 
 template <class T> class Vector
@@ -61,7 +61,7 @@ template <class T> T Vector<T>::norm()
     {
         norm_sum += vec_data[i]*vec_data[i];
     }
-    return sqrt(norm_sum);
+    return mysqrt(norm_sum);
 }
 
 template <class T> size_t Vector<T>::get_dims()
