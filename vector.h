@@ -89,6 +89,7 @@ template <class T> void Vector<T>::printVector() const
     {
         cout << vec_data[i] << " ";
     }
+    cout << endl;
 }
 
 template <class T> T Vector<T>::get_elem(int pos)
@@ -99,4 +100,50 @@ template <class T> T Vector<T>::get_elem(int pos)
 template <class T> void Vector<T>::set_elem(int pos, T value)
 {
     vec_data[pos] = value;
+}
+
+template <class T> Vector<T> Vector<T>::operator+ (const Vector<T> &rightvector) const
+{
+    if (vec_nels != rightvector.vec_nels)
+    {
+        cout << "cannot add two vectors of different dimensions" << endl;
+        return -1;
+    }
+    else
+    {
+        Vector result_vector(vec_nels);
+        for (int i = 0; i < vec_nels; i++)
+        {
+            result_vector.set_elem(i, vec_data[i] + rightvector.vec_data[i]);
+        }
+        return result_vector;
+    }
+}
+
+template <class T> Vector<T> Vector<T>::operator* (const T &rightnum) const
+{
+    Vector result_vector(vec_nels);
+    for (int i = 0; i < vec_nels; i++)
+    {
+        result_vector.set_elem(i, vec_data[i] * rightnum);
+    }
+    return result_vector;
+}
+
+template <class T> Vector<T> Vector<T>::operator- (const Vector<T> &rightvector) const
+{
+    if (vec_nels != rightvector.vec_nels)
+    {
+        cout << "cannot add two vectors of different dimensions" << endl;
+        return -1;
+    }
+    else
+    {
+        Vector result_vector(vec_nels);
+        for (int i = 0; i < vec_nels; i++)
+        {
+            result_vector.set_elem(i, vec_data[i] - rightvector.vec_data[i]);
+        }
+        return result_vector;
+    }
 }
