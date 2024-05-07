@@ -21,6 +21,10 @@ template <class T> class Vector
         // Mathematical methods
         T norm();
         void normalise();
+        // Overloading methods
+        Vector<T> operator+ (const Vector<T> &rightvector) const;
+        Vector<T> operator- (const Vector<T> &rightvector) const;
+        Vector<T> operator* (const T &righnum) const;
 };
 
 template <class T> Vector<T>::Vector()
