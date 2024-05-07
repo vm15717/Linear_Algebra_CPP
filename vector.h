@@ -17,6 +17,7 @@ template <class T> class Vector
         // Helper methods
         void printVector();
         size_t get_dims();
+        T get_elem(int pos);
         // Mathematical methods
         T norm();
         void normalise();
@@ -83,4 +84,9 @@ template <class T> void Vector<T>::printVector()
     {
         cout << vec_data[i] << " ";
     }
+}
+
+template <class T> T Vector<T>::get_elem(int pos)
+{
+    return vec_data[pos]
 }
