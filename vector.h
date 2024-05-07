@@ -15,9 +15,10 @@ template <class T> class Vector
         // Destructors
         ~Vector();
         // Helper methods
-        void printVector();
+        void printVector() const;
         size_t get_dims();
         T get_elem(int pos);
+        void set_elem(int pos, T value);
         // Mathematical methods
         T norm();
         void normalise();
@@ -82,7 +83,7 @@ template <class T> void Vector<T>::normalise()
     }
 }
 
-template <class T> void Vector<T>::printVector()
+template <class T> void Vector<T>::printVector() const
 {
     for (int i = 0; i < vec_nels; i++)
     {
@@ -92,5 +93,10 @@ template <class T> void Vector<T>::printVector()
 
 template <class T> T Vector<T>::get_elem(int pos)
 {
-    return vec_data[pos]
+    return vec_data[pos];
+}
+
+template <class T> void Vector<T>::set_elem(int pos, T value)
+{
+    vec_data[pos] = value;
 }
