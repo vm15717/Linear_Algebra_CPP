@@ -10,7 +10,7 @@ template <class T> class Vector
     public:
         // Constructors
         Vector();
-        Vector(size_t nels);
+        Vector(size_t nels, const T val);
         Vector(size_t nels, const T *inputData);
         // Destructors
         ~Vector();
@@ -34,13 +34,13 @@ template <class T> Vector<T>::Vector()
     vec_data = nullptr;
 }
 
-template <class T> Vector<T>::Vector(size_t nels)
+template <class T> Vector<T>::Vector(size_t nels, const T val)
 {
     vec_nels = nels;
     vec_data = new T[vec_nels];
     for (int i = 0; i < vec_nels; i++)
     {
-        vec_data[i] = 0;
+        vec_data[i] = val;
     }
 }
 
@@ -111,7 +111,7 @@ template <class T> Vector<T> Vector<T>::operator+ (const Vector<T> &rightvector)
     }
     else
     {
-        Vector result_vector(vec_nels);
+        Vector result_vector(vec_nels, 0);
         for (int i = 0; i < vec_nels; i++)
         {
             result_vector.set_elem(i, vec_data[i] + rightvector.vec_data[i]);
@@ -122,7 +122,7 @@ template <class T> Vector<T> Vector<T>::operator+ (const Vector<T> &rightvector)
 
 template <class T> Vector<T> Vector<T>::operator* (const T &rightnum) const
 {
-    Vector result_vector(vec_nels);
+    Vector result_vector(vec_nels, 0);
     for (int i = 0; i < vec_nels; i++)
     {
         result_vector.set_elem(i, vec_data[i] * rightnum);
@@ -139,7 +139,7 @@ template <class T> Vector<T> Vector<T>::operator- (const Vector<T> &rightvector)
     }
     else
     {
-        Vector result_vector(vec_nels);
+        Vector result_vector(vec_nels, 0);
         for (int i = 0; i < vec_nels; i++)
         {
             result_vector.set_elem(i, vec_data[i] - rightvector.vec_data[i]);
