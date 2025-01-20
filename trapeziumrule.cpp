@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 double exp2(double );
 double trapezium(double (*f)(double), double);
@@ -15,7 +16,7 @@ int main()
     {
         result += trapezium(exp2, a+i*dx);
     }
-    std::cout << "The integral is : " << result/num << std::endl;
+    std::cout << std::setprecision(17) << "The integral is : " << result/num << std::endl;
     return 0;
 }
 
