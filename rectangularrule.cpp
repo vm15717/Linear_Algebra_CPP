@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 double rectangular(double (*f)(double), double x);
 double exp2(double);
@@ -18,7 +19,7 @@ int main()
     }
     for (int j = 0; j <= num; j += num/100)
     {
-        std::cout << j << "th step : " << result[j] << std::endl;
+        std::cout << j << "th step : "<< std::setprecision(17) << result[j] << std::endl;
     }
     return 0;
 }
