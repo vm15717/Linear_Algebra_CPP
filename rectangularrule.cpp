@@ -4,7 +4,7 @@
 
 double rectangular(double (*f)(double), double x);
 double exp2(double);
-
+double sqrt2(double);
 int main()
 {
     std::cout << "Rectangular rule: " << std::endl;
