@@ -4,7 +4,7 @@
 double seconddiff(double (*f)(double), double, double);
 double exp2(double);
 double sqrt2(double);
-
+double sin2(double);
 int main()
 {
     double a = 1.0;
@@ -14,6 +14,8 @@ int main()
     std::cout << std::setprecision(17) << expdiff << std::endl;
     double sqrtdiff = seconddiff(sqrt2, b, h)/std::pow(h, 2);
     std::cout << std::setprecision(17) << sqrtdiff << std::endl;
+    double sindiff = seconddiff(sin2, b, h)/std::pow(h, 2);
+    std::cout << std::setprecision(17) << sindiff << std::endl;
     return 0;
 }
 
@@ -30,4 +32,9 @@ double seconddiff(double (*f)(double), double x, double h)
 double sqrt2(double x)
 {
     return std::sqrt(x);
+}
+
+double sin2(double x)
+{
+    return std::sin(x);
 }
