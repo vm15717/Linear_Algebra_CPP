@@ -5,6 +5,7 @@ double exp2(double );
 double rightdiff(double (*f)(double), double, double);
 double prodfunc(double );
 double sqrt2(double );
+double sin2(double );
 int main()
 {
     double a = 1.0;
@@ -43,4 +44,9 @@ double prodfunc(double x)
 double sqrt2(double x)
 {
     return std::sqrt(x);
+}
+
+double sin2(double x)
+{
+    return std::sin(x);
 }
