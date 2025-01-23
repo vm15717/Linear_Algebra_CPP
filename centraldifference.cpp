@@ -9,11 +9,11 @@ double sin2(double );
 int main()
 {
     double a = 1.0;
-    double h = 1e-5;
+    double h = 1e-7;
     double adiff = rightdiff(exp2, a, h);
-    double b = 0.1;
+    double b = 0.2;
     double bdiff = rightdiff(prodfunc, b, h);
-    double c = 0.5;
+    double c = 0.25;
     double cdiff = rightdiff(sqrt2, c, h);
     std::cout << std::setprecision(17) << adiff << std::endl;
     std::cout << std::setprecision(17) << bdiff << std::endl;
