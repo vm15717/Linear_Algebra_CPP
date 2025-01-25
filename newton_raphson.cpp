@@ -7,7 +7,7 @@ double squareroot(double);
 int main()
 {
     double val = newton_raphson(squareroot, diffsquareroot, 2, 10);
-    std::cout << "The solution to x^2 = 2 is " << std::setprecision(17) << val << std::endl;
+    std::cout << "The solution to x^2 = 5 is " << std::setprecision(17) << val << std::endl;
     return 0;
 }
 
@@ -22,7 +22,7 @@ double newton_raphson(double (*f)(double), double (*df)(double), double init, in
 
 double squareroot(double x)
 {
-    return x*x - 2.0;
+    return x*x - 5.0;
 }
 
 double diffsquareroot(double x)
