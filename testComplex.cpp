@@ -6,5 +6,6 @@ int main()
     Complex c2(1.0, -1.0);
     std::cout << c1*c2 << std::endl;
     std::cout << c1/c2 << std::endl;
+    std::cout << c1.argument() << std::endl;
     return 0;
 }
