@@ -39,6 +39,21 @@ class Dual
     {
         return Dual(reala*other.reala, realb*other.reala + reala*other.realb);
     }
+    Dual operator/(const Dual &other) const
+    {
+        if (other.reala == 0)
+        {
+            if (reala == 0)
+            {
+                return Dual(realb, other.realb);
+            }
+            else
+            {
+                throw std::invalid_argument("Cannot perform division");
+            }
+        }
+        return Dual(reala/other.reala, (realb * other.reala - reala * other.realb)/(other.reala * other.reala));
+    }
     bool operator==(const Dual &other) const
     {
         return reala == other.reala && realb == other.realb;
@@ -53,14 +68,18 @@ class Dual
         {
             out << dual.realb << "e";
         }
+        else if (dual.realb < 0)
+        {
+            out << dual.reala << " - " << -dual.realb << "e";
+        }
         else
         {
             out << dual.reala << " + " << dual.realb << "e";
         }
         return out;
     }
-    Dual apply(double (*f)(double)) const
+    Dual apply(double (*f)(double), double (*df)(double)) const
     {
-        return Dual(f(reala), realb *f(reala));
+        return Dual(f(reala), realb * df(reala));
     }
 };
