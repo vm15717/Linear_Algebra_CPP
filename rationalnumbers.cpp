@@ -95,5 +95,4 @@ class Rational
         }
         return out;
     }
-
 };
