@@ -47,6 +47,14 @@ class Complex
     {
         return real*real + imag*imag;
     }
+    bool operator==(const Complex &other)
+    {
+        return real == other.real & imag == other.imag;
+    }
+    bool operator<(const Complex &other)
+    {
+        return real < other.real && imag < other.imag;
+    }
     Complex operator/(const Complex &other) const
     {
         if (other.real == 0 && other.imag == 0)
