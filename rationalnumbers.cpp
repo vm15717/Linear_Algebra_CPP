@@ -27,11 +27,11 @@ class Rational
         simplify();
     }
     // Getters
-    int getnumerator()
+    int getnumerator() const
     {
         return numerator;
     }
-    int getdenominator()
+    int getdenominator() const
     {
         return denominator;
     }
@@ -75,11 +75,11 @@ class Rational
         }
         return Rational(numerator, denominator) * Rational(other.denominator, other.numerator);
     }
-    bool operator==(const Rational &other)
+    bool operator==(const Rational &other) const
     {
         return numerator == other.numerator && denominator == other.denominator;
     }
-    bool operator<(const Rational &other)
+    bool operator<(const Rational &other) const
     {
         return numerator*other.denominator < other.numerator*denominator;
     }
