@@ -51,17 +51,17 @@ class Rational
         simplify();
     }
     // Operator overloading
-    Rational operator+(const Rational &other)
+    Rational operator+(const Rational &other) const
     {
         int newnum = numerator * other.denominator + denominator * other.numerator;
         int newdenom = denominator * other.denominator;
         return Rational(newnum, newdenom);
     }
-    Rational operator-(const Rational &other)
+    Rational operator-(const Rational &other) const
     {
         return Rational(numerator, denominator) + Rational(-other.numerator, -other.denominator);
     }
-    Rational operator*(const Rational &other)
+    Rational operator*(const Rational &other) const
     {
         int newnum = numerator * other.numerator;
         int newdenom = denominator * other.denominator;
