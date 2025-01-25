@@ -3,7 +3,7 @@
 
 int main()
 {
-    Dual d(1, 3);
-    std::cout << d.apply(std::sin) << std::endl;
+    Dual d(3, 1);
+    std::cout << d.apply(std::sin, std::cos) << std::endl;
     return 0;
 }
