@@ -45,7 +45,7 @@ class Dual
         {
             if (reala == 0)
             {
-                return Dual(realb, other.realb);
+                return Dual(realb/other.realb, 0);
             }
             else
             {
