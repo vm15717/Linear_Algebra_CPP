@@ -53,17 +53,17 @@ class Complex
         {
             throw std::invalid_argument("Cannot divide by 0");
         }
-        return ((*this) * other.conjugate())/other.abs();
+        return Complex((real * other.real + imag * other.imag) / other.abs(), -other.imag*real + other.real*imag);
     }
     double argument() const 
     {
         return std::atan(imag/real);
     }
-    friend std::ostream & operator<<(std::ostream &out, Complex &complex)
+    friend std::ostream &operator<<(std::ostream &out, const Complex &complex)
     {
         if (complex.getimag() == 0)
         {
-            out << complex.getreal() << std::endl;
+            out << complex.getreal();
         }
         else if (complex.getimag() < 0)
         {
