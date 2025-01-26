@@ -8,6 +8,8 @@ class Dual
     public:
     // Constructor
     Dual(double a = 0, double b = 0) : reala(a), realb(b) {}
+    // Copy Constructor 
+    Dual(const Dual &dual): reala(dual.geta()), realb(dual.getb()){}
     // Getters
     double geta() const
     {
