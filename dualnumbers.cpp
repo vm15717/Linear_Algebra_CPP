@@ -83,3 +83,13 @@ class Dual
         return Dual(f(reala), realb * df(reala));
     }
 };
+// functions
+inline Dual sin(const Dual &dual)
+{
+        return Dual(std::sin(dual.geta()), std::cos(dual.geta())*dual.getb());
+}
+
+inline Dual cos(const Dual &dual)
+{
+        return Dual(std::cos(dual.geta()), -std::sin(dual.geta())*dual.getb());
+}
