@@ -93,3 +93,8 @@ inline Dual cos(const Dual &dual)
 {
         return Dual(std::cos(dual.geta()), -std::sin(dual.geta())*dual.getb());
 }
+
+inline Dual pow(const Dual &dual, const int n)
+{
+    return Dual(std::pow(dual.geta(), n), n*std::pow(dual.geta(), n-1)*dual.getb());
+}
