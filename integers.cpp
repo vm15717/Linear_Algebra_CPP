@@ -11,9 +11,11 @@ int main(void)
     std::cout << j << std::endl;
     std::cout << k << std::endl;
     std::cout << l << std::endl;
-   std::cout << std::bitset <8> (i) << std::endl;
+    std::cout << std::bitset <8> (i) << std::endl;
     std::cout << std::bitset <16> (j) << std::endl;
     std::cout << std::bitset <32> (k) << std::endl;
     std::cout << std::bitset <64> (l) << std::endl; 
+    int m = -31;
+    std::cout << std::bitset <8> (m) << std::endl;
     return 0;
 }
