@@ -1,9 +1,9 @@
 #include <iostream>
 #include <cstdint>
-
+#include <bitset>
 int main(void)
 {
-    uint8_t i = 2;
+    uint8_t i = 31;
     uint16_t j = 256;
     uint32_t k = 51241242;
     uint64_t l = 214312421423423535;
@@ -11,5 +11,9 @@ int main(void)
     std::cout << j << std::endl;
     std::cout << k << std::endl;
     std::cout << l << std::endl;
+   std::cout << std::bitset <8> (i) << std::endl;
+    std::cout << std::bitset <16> (j) << std::endl;
+    std::cout << std::bitset <32> (k) << std::endl;
+    std::cout << std::bitset <64> (l) << std::endl; 
     return 0;
 }
