@@ -10,8 +10,7 @@ class Interval
     double start;
     double end;
     public:
-    Interval(double a):start(a), end(a) {}
-    Interval(double a = 0, double b = 0) {
+    Interval(double a, double b) {
         if (b < a)
         {
             throw std::invalid_argument("The end point of the interval must be greater than or equal to the starting point");
@@ -19,32 +18,98 @@ class Interval
         this->start = a;
         this->end = b;
     }
-    bool in(double x)
+    Interval(double a) {Interval(a, a);}
+    bool in(const double x)
     {
         return this->start <= x && this->end >= x;
     }
-    double getstart()
+    double getstart() const
     {
         return this->start;
     }
-    double getend()
+    double getend() const
     {
         return this->end;
     }
-    Interval operator+(Interval &other)
+    void setstart(const double a)
     {
+        this->start = a;
+    }
+    void setend(const double b)
+    {
+        this->end = b;
+    }
+    Interval operator+(const Interval &other) const
+    {
+        int old_round = std::fegetround();
         std::fesetround(FE_DOWNWARD);
-        double a = other.getstart()  + start;
+        double a = other.getstart()  + this->start;
         std::fesetround(FE_UPWARD);
-        double b = other.getend() + end;
+        double b = other.getend() + this->end;
+        std::fesetround(old_round);
         return Interval(a, b);
     }
-    Interval operator/(Interval &other)
+    Interval operator/(const int n) const
     {
-        
+        if (n == 0)
+        {
+            throw std::invalid_argument("Cannot divide by 0.");
+        }
+        if (!((n > 0) && (this->start >=0)))
+        {
+            throw std::invalid_argument("n should be > 0 to satisfy positivity arguments");
+        }
+        int old_round = std::fegetround();
+        std::fesetround(FE_DOWNWARD);
+        double a = this->start/n;
+        std::fesetround(FE_UPWARD);
+        double b = this->end/n;
+        std::fesetround(old_round);
+        return Interval(a, b);
     }
-    Interval operator-(Interval &other)
+    Interval operator*(const Interval &other) const
     {
-        return Interval(start - other.getend(), end - other.getstart());    
+        if (!((other.getstart() >= 0) && (this->start >=0)))
+        {
+            throw std::invalid_argument("the intervals fail to satisfy positivity arguments");
+        }
+        int old_round = std::fegetround();
+        std::fesetround(FE_DOWNWARD);
+        double a = other.getstart()  * this->start;
+        std::fesetround(FE_UPWARD);
+        double b = other.getend() * this->end;
+        std::fesetround(old_round);
+        return Interval(a, b);    
+    }
+    Interval operator-(const Interval &other) const
+    {
+        int old_round = std::fegetround();
+        std::fesetround(FE_UPWARD);
+        double a = this->start - other.getend();
+        std::fesetround(FE_DOWNWARD);
+        double b = this->end - other.getstart();
+        std::fesetround(old_round);
+        return Interval(a, b);        
+    }
+    Interval pow(const int n) const
+    {
+        Interval result = Interval(1.0);
+        if (n < 0)
+        {
+           throw std::invalid_argument("need positive power to satisfy positivity arguments"); 
+        }
+        else
+        {
+            for (int j = 0; j < n; j++)
+            {
+                result = (*this) * result;
+            }
+        }
+        return result;
+    }
+    friend std::ostream &operator<<(std::ostream &out, Interval &interval)
+    {
+        out << "[" << interval.getstart() << ", " << interval.getend() << "]";
+        return out;
     }
 };
