@@ -84,9 +84,9 @@ class Interval
     Interval operator-(const Interval &other) const
     {
         int old_round = std::fegetround();
-        std::fesetround(FE_UPWARD);
-        double a = this->start - other.getend();
         std::fesetround(FE_DOWNWARD);
+        double a = this->start - other.getend();
+        std::fesetround(FE_UPWARD);
         double b = this->end - other.getstart();
         std::fesetround(old_round);
         return Interval(a, b);        
@@ -107,7 +107,7 @@ class Interval
         }
         return result;
     }
-    friend std::ostream &operator<<(std::ostream &out, Interval &interval)
+    friend std::ostream &operator<<(std::ostream &out, const Interval &interval)
     {
         out << "[" << interval.getstart() << ", " << interval.getend() << "]";
         return out;
