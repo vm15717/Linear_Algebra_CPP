@@ -78,6 +78,16 @@ class Interval
         std::fesetround(old_round);
         return Interval(a, b);
     }
+    Interval operator+(double number)
+    {
+        int old_round = std::fegetround();
+        std::fesetround(FE_DOWNWARD);
+        double a = number + this->start;
+        std::fesetround(FE_UPWARD);
+        double b = number + this->end;
+        std::fesetround(old_round);
+        return Interval(a, b);    
+    }
     Interval operator*(const Interval &other) const
     {
         if (!((other.getstart() >= 0) && (this->start >=0)))
