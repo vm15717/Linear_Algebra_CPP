@@ -91,6 +91,10 @@ class Interval
         std::fesetround(old_round);
         return Interval(a, b);        
     }
+    Interval operator-()
+    {
+        return Interval(-this->end, -this->start);
+    }
     Interval pow(const int n) const
     {
         Interval result = Interval(1.0);
