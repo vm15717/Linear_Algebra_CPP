@@ -10,5 +10,6 @@ int main(void)
     std::cout << I1+I2 << std::endl;
     std::cout << I1-I2 << std::endl;
     std::cout << -I1 << std::endl;
+    std::cout << I1/(-3) << std::endl;
     return 0;
 }

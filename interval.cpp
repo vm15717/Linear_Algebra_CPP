@@ -55,15 +55,26 @@ class Interval
         {
             throw std::invalid_argument("Cannot divide by 0.");
         }
-        if (!((n > 0) && (this->start >=0)))
-        {
-            throw std::invalid_argument("n should be > 0 to satisfy positivity arguments");
-        }
         int old_round = std::fegetround();
+        double a, b;
         std::fesetround(FE_DOWNWARD);
-        double a = this->start/n;
+        if (n > 0)
+        {
+            a = this->start/n;       
+        }
+        else
+        {
+            a = this->end/n;
+        }
         std::fesetround(FE_UPWARD);
-        double b = this->end/n;
+        if (n > 0)
+        {
+            b = this->end/n;       
+        }
+        else
+        {
+            b = this->start/n;
+        }
         std::fesetround(old_round);
         return Interval(a, b);
     }
