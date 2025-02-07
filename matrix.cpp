@@ -30,4 +30,28 @@ class Matrix
             }
         }
     }
+    Matrix multiply(const Matrix &other)
+    {
+
+    }
+    Matrix dot(const Matrix &other)
+    {
+
+    }
+    Matrix operator+(const Matrix &other) const
+    {
+        if (other.rows != rows && other.cols != cols)
+        {
+            throw std::invalid_argument("Cannot add matrices, the number of rows and columns do not match!")
+        }
+        Matrix result(rows, cols, 0);
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                result.matrix[i][j] = other.matrix[i][j] + matrix[i][j]
+            }
+        }
+        return result;
+    }
 };
